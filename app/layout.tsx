@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ConvexClientProvider } from "@/components/providers/convex-provider";
-
+import {Toaster} from 'sonner'
 
 
 
@@ -58,6 +58,7 @@ export default function RootLayout({
           
 
         >
+          <Toaster position="bottom-center" />
         {children}
         </ThemeProvider>
         </ConvexClientProvider>

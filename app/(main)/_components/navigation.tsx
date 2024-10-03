@@ -5,11 +5,16 @@ import { ChevronLeftIcon, MenuIcon } from "lucide-react"
 import { usePathname } from "next/navigation"
 import React, { ElementRef, useEffect, useRef, useState } from "react"
 import { useMediaQuery } from "usehooks-ts"
+import UserSettings from "./user-item"
+import { useQuery } from "convex/react"
+import { api } from "@/convex/_generated/api"
 
 
 export const Navigation = () => {
     const pathname = usePathname();
     const isMobile = useMediaQuery("(max-width : 768px)");
+
+    const documents = useQuery(api.documents.get);
 
 
     const isResizingRef  = useRef(false);
@@ -116,7 +121,7 @@ export const Navigation = () => {
         <>
        
             <aside ref={sidebarRef} className={cn(
-                "group/sidebar h-full bg-secondary overflow-y-hidden relative flex w-60 flex-col z-[9999]",
+                "group/sidebar h-full bg-secondary overflow-y-hidden relative flex w-60 flex-col z-[99999]",
                 isResetting && "transition-all ease-in-out duration-300",
                 isMobile && "w-0"
                 
@@ -131,10 +136,12 @@ export const Navigation = () => {
                    </div>
           
             <div>
-                <p>Action Items</p>
+                <UserSettings/>
             </div>
             <div className="mt-4">
-                <p>Documents</p>
+                {documents?.map((document) => (
+                    <p key={document._id}>{document.title}</p>
+                ))}
             </div>
             <div
             onMouseDown={handleMouseDown}
@@ -143,7 +150,7 @@ export const Navigation = () => {
 
             </aside>
 
-            <div ref={navbarRef} className={cn("absolute top-0 z-[999999] left-60 w-[calc(100%-240px)]" ,
+            <div ref={navbarRef} className={cn("absolute top-0 z-[9999] left-60 w-[calc(100%-240px)]" ,
                 isResetting && "transition-all ease-in-out duration-300",
                 isMobile && "left-0 w-full"
             )}>
