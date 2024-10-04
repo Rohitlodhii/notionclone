@@ -1,5 +1,6 @@
 "use client"
 
+import { ConfirmModal } from "@/components/modals.tsx/confirm-modal";
 import { Spinner } from "@/components/spinner";
 import { Input } from "@/components/ui/input";
 import { api } from "@/convex/_generated/api";
@@ -47,12 +48,11 @@ const TrashBox = () => {
     }
 
     const onRemove = (
-        event : React.MouseEvent<HTMLDivElement , MouseEvent> ,
+       
         documentId : Id<"documents">
 
     )=> {
-        event.stopPropagation();
-
+   
         const promise =remove({
             id : documentId
         })
@@ -90,7 +90,7 @@ const TrashBox = () => {
                     placeholder="Filter by title..."
                 />
            </div>
-           <div className="mt-2 px-1 pb-1">
+           <div className="mt-2 px-1 pb-4">
                 <p className="hidden last:block text-xs text-center text-muted-foreground">
                     No Documents found
                 </p>
@@ -105,9 +105,11 @@ const TrashBox = () => {
                             <div onClick={(e)=> onRestore(e,document._id)} role="button" className="rounded-sm p-2 hover:bg-neutral-200">
                                 <Undo className="h-4 w-4 text-muted-foreground" />
                             </div>
+                            <ConfirmModal onConfirm={()=> onRemove(document._id)}>
                             <div role="button" className="rounded-sm p-2 hover:bg-neutral-200">
                                 <Trash className="h-4 w-4 text-muted-foreground" />
                             </div>
+                            </ConfirmModal>
                         </div>
                     </div>
                 ))}
