@@ -71,11 +71,11 @@ const DocumentList = ( {
             }}
             className={cn(
                 "hidden text-sm font-medium text-muted-foreground/80",
-                expanded && "last:block",
+                expanded  && "last:block",
                 level === 0 && "hidden"
             )}
             >
-                No pages inside
+              No pages inside !
             </p>
             {
                 documents.map((document) => (
