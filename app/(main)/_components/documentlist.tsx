@@ -43,7 +43,7 @@ const DocumentList = ( {
     });
 
     const onRedirect = (documentId : string) => {
-        router.push('/documents/${documentsId}');
+        router.push(`/documents/${documentId}`);
     }
 
 
