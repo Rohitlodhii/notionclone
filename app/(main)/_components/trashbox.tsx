@@ -101,13 +101,13 @@ const TrashBox = () => {
                         <span className="truncate pl-2">
                             {document.title}
                         </span>
-                        <div className="flex items-center mr-1">
-                            <div onClick={(e)=> onRestore(e,document._id)} role="button" className="rounded-sm p-2 hover:bg-neutral-200">
-                                <Undo className="h-4 w-4 text-muted-foreground" />
+                        <div className="flex items-center mr-1 gap-1">
+                            <div onClick={(e)=> onRestore(e,document._id)} role="button" className="rounded-sm p-2 hover:bg-neutral-200  dark:hover:bg-neutral-500">
+                                <Undo className="h-3 w-3 text-muted-foreground" />
                             </div>
                             <ConfirmModal onConfirm={()=> onRemove(document._id)}>
-                            <div role="button" className="rounded-sm p-2 hover:bg-neutral-200">
-                                <Trash className="h-4 w-4 text-muted-foreground" />
+                            <div role="button" className="rounded-sm p-2 hover:bg-neutral-200 dark:hover:bg-neutral-500">
+                                <Trash className="h-3 w-3 text-muted-foreground" />
                             </div>
                             </ConfirmModal>
                         </div>

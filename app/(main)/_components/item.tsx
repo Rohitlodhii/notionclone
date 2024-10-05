@@ -90,7 +90,7 @@ export const Item = ( {
         toast.promise(promise , {
             loading : "Creating a new note..",
             success : "New note created",
-            error : "Failed to  create a new node"
+            error : "Failed to  create a new note"
         })
     }
 
@@ -109,7 +109,7 @@ export const Item = ( {
          )}
         >
             { !!id && (
-                <div role="button" className="h-full rounded-sm hover:bg-neutral-300 dark:bg-neutral-600 mr-1"
+                <div role="button" className="h-full rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600 mr-1"
                 onClick={handleExpand}
                 >
                     <ChevronIcon className="h-4 w-4 shrink-0 text-muted-foreground/50" />
