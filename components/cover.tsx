@@ -26,6 +26,7 @@ const Cover = (
     } : CoverImageProps
 ) => {
 
+   
     const params = useParams()
     const coverImage = useCoverImage();
     const {edgestore} = useEdgeStore();
@@ -46,13 +47,10 @@ const Cover = (
 
     return ( 
         <div className={cn(" relative w-full h-[35vh] group"  , !url && "h-[12vh]" , url && "bg-muted")}>
-            {
-                !!url && (
+            {!!url && (
                     <Image src={url} alt="cover" fill className="object-cover" />
-                )
-        }
-        {
-        url && !preview && (
+                )}
+        {url && !preview && (
             <div className="opacity-0 group-hover:opacity-100 absolute bottom-5 right-5 flex items-center gap-x-2">
                 <Button onClick={() => coverImage.onReplace(url)} className="text-muted-foreground text-xs" variant="outline" size="sm">
                     <ImageIcon className="h-4 w-4 mr-2" />
@@ -63,8 +61,7 @@ const Cover = (
                  Remove
                     </Button>
             </div>
-        )
-        }
+        )}
         </div>
      );
 }

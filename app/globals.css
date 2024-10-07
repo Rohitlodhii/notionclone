@@ -12,6 +12,9 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
   display: none;
 }
 
+
+
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

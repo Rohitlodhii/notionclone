@@ -9,6 +9,7 @@ import React from "react";
 import Title from "./title";
 import {Banner} from "./banner";
 import Menu from "./navbarMenu";
+import { Publish } from "./publish";
 
 
 
@@ -62,6 +63,7 @@ const Navbar = ({
                         <Title initialData={document} />
 
                         <div className="flex items-center gap-x-2">
+                            <Publish initialData={document} />
                             <Menu documentId={document._id} />
                         </div>
                     </div>
