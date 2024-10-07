@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import { useUser } from "@clerk/clerk-react";
 
 import { useMutation } from "convex/react";
-import { ChevronDown, ChevronRight, LucideIcon, MoreHorizontal, Plus, TrashIcon } from "lucide-react";
+import { ArrowUp, ChevronDown, ChevronRight, Home, LucideIcon, MoreHorizontal, Plus, TrashIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
@@ -64,6 +64,16 @@ export const Item = ( {
         })
 
     }
+
+    const onNewTab =  ( event :  React.MouseEvent<HTMLDivElement , MouseEvent> ) => {
+        event.stopPropagation();
+        if(!id) return;
+        if (typeof window !== 'undefined') {
+
+        window.open(`/documents/${id}` , '_blank' , 'noopener,noreferrer');
+        }
+    }
+    
 
     const handleExpand = (
         event : React.MouseEvent<HTMLDivElement , MouseEvent>
@@ -154,10 +164,16 @@ export const Item = ( {
                                     side="right"
                                     forceMount
                                 >
-                                    <DropdownMenuItem onClick={onArchive}>
+                                    <DropdownMenuItem onClick={onArchive} className="text-red-600">
                                             <TrashIcon className="h-4 w-4 mx-2" />
-                                            Delete
+                                            Move to trash
                                     </DropdownMenuItem>
+                                    <DropdownMenuItem onClick={onNewTab} >
+                                            <ArrowUp className="h-4 w-4 mx-2 rotate-45" />
+                                              Open in New Tab
+                                    </DropdownMenuItem>
+
+
                                     <DropdownMenuSeparator/>
 
                                     <div className="text-xs text-muted-foreground p-2">
@@ -165,10 +181,12 @@ export const Item = ( {
                                     </div>
                                 </DropdownMenuContent>
                         </DropdownMenu>
+
+                       
                         <div 
                          role="button"
                          onClick={onCreate}
-                        className="opacity-0 group-hover:opacity-100 h-full ml-auto
+                        className="opacity-0  group-hover:opacity-100 h-full ml-auto
                         rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600">
                             <Plus className="h-4 w-4 text-muted-foreground" />
                         </div>

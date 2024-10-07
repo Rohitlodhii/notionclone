@@ -1,7 +1,7 @@
 "use client"
 
 import { cn } from "@/lib/utils"
-import { ChevronLeftIcon, MenuIcon, Plus, PlusCircle, SearchIcon, Settings, Trash } from "lucide-react"
+import { ChevronLeftIcon, Home, MenuIcon, Plus, PlusCircle, SearchIcon, Settings, Trash } from "lucide-react"
 import { useParams, usePathname, useRouter } from "next/navigation"
 import React, { ElementRef, useEffect, useRef, useState } from "react"
 import { useMediaQuery } from "usehooks-ts"
@@ -131,7 +131,7 @@ export const Navigation = () => {
 
     const handleCreate = () => {
         const promise = create({ title : "Untitled"})
-            .then((documentId) => router.push(`./documents/${documentId}`))
+            .then((documentId) => router.push(`/documents/${documentId}`))
         toast.promise( promise , {
             loading : "Creating a node ...",
             success : "New note created!",
@@ -181,6 +181,11 @@ export const Navigation = () => {
 
                 />
                 <Item
+                    onClick={()=>router.push('/documents')}
+                    icon={Home}
+                    label="Home"
+                   />
+                <Item
                     onClick={handleCreate}
                     label="New Page"
                     icon={PlusCircle}
@@ -189,6 +194,7 @@ export const Navigation = () => {
             </div>
             <div className="mt-4">
                    <DocumentList/>
+                   
                    <Item
                     onClick={handleCreate}
                     icon={Plus}
