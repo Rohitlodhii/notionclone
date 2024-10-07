@@ -54,6 +54,7 @@ export const Item = ( {
         event.stopPropagation();
         if(!id) return;
 
+        router.push('/documents');
         const promise = archive({id});
 
         toast.promise(promise , {
@@ -84,7 +85,7 @@ export const Item = ( {
                 onExpand?.();
 
             }
-            // router.push(`/documents/${documentId}`);
+            router.push(`/documents/${documentId}`);
         })
 
         toast.promise(promise , {

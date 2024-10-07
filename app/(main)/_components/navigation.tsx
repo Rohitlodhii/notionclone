@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils"
 import { ChevronLeftIcon, MenuIcon, Plus, PlusCircle, SearchIcon, Settings, Trash } from "lucide-react"
-import { useParams, usePathname } from "next/navigation"
+import { useParams, usePathname, useRouter } from "next/navigation"
 import React, { ElementRef, useEffect, useRef, useState } from "react"
 import { useMediaQuery } from "usehooks-ts"
 import UserSettings from "./user-item"
@@ -26,6 +26,7 @@ export const Navigation = () => {
 
     const search = useSearch();
 
+    const router = useRouter();
 
     const create = useMutation(api.documents.create);
 
@@ -130,6 +131,7 @@ export const Navigation = () => {
 
     const handleCreate = () => {
         const promise = create({ title : "Untitled"})
+            .then((documentId) => router.push(`./documents/${documentId}`))
         toast.promise( promise , {
             loading : "Creating a node ...",
             success : "New note created!",

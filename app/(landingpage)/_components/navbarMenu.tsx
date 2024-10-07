@@ -38,7 +38,7 @@ const Menu = ({
             error : "Failed to Archive note..."
         })
 
-        router.push('/')
+        router.push('/documents')
     }
     
 
@@ -51,7 +51,7 @@ const Menu = ({
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-60" align="end" alignOffset={8} forceMount>
-                <DropdownMenuItem>
+                <DropdownMenuItem onClick={onArchive}>
                     <Trash className="h-4 w-4 mr-2"/> Delete
                 </DropdownMenuItem>
             <DropdownMenuSeparator />
