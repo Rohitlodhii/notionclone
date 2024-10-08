@@ -6,6 +6,8 @@ import { SignInButton } from "@clerk/clerk-react"
 import { useConvexAuth } from "convex/react"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
+import { Cover } from "./ui/cover"
+import { HeroScrollDemo } from "./HeroScrol"
 
 
 
@@ -16,19 +18,21 @@ const Heading = () => {
 
 
   return (
-    <div className="max-w-3xl space-y-4">
-        <h1 className="font-bold text-3xl sm:text-5xl md:text-6xl">
-        Turn Ideas into Actions with the Power of {" "}
-        <span className="underline">Smaran</span>
-        </h1>
+   
+       <div className="  w-full dark:bg-zinc-900 bg-white dark:bg-dot-white/[0.1] bg-dot-black/[0.3] relative md:pt-30 pt-32 space-y-4">
+      {/* Radial gradient for the container to give a faded look */}
+      <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-zinc-900 bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+       <h1 className="text-4xl  font-semibold md:text-4xl lg:text-6xl  max-w-7xl mx-auto text-center mt-6 relative z-20 py-1 bg-clip-text  text-black dark:text-whites leading-relaxed md:leading-loose">
+        Manage your notes <br /> in <Cover>Breeziness..</Cover>
+      </h1>
 
-        <h3 className="text-base sm:text-xl md:text-2xl font-medium">
+        <h3 className="text-base text-center mx-auto w-[60%] md:w-full sm:text-sm md:text-base ">
             Smaran is a tool to organize your ideas and manage your task.
         </h3>
         { isAuthenticated && !isLoading && (
-        <Button asChild>
-          <Link href='/documents'> Smaran Ideas!
-          <ArrowRight className="h-4 w-4 ml-2 mt-[3px]"/>
+        <Button className="group " asChild>
+          <Link href='/documents'> Get started
+          <ArrowRight className="h-4 w-4 ml-2 mt-[3px] transition group-hover:rotate-[-45deg]"/>
           </Link>
            
             
@@ -45,15 +49,18 @@ const Heading = () => {
       {
         !isAuthenticated && !isLoading && (
           <SignInButton mode="modal">
-            <Button>
-              Smaran Ideas !
-              <ArrowRight className="h-4 w-4 ml-2 mt-[3px]"/>
+            <Button className="group" variant='outline'>
+              Get Started !
+              <ArrowRight className="h-4 w-4 ml-2 mt-[3px] transition group-hover:rotate-[-45deg]"/>
             </Button>
           </SignInButton>
         )
 
       }
-      
+
+
+<HeroScrollDemo/>
+     
     </div>
   )
 }

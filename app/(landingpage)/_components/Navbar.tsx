@@ -17,21 +17,21 @@ export const Navbar =()=> {
     const scrolled = useScrollTop();
 
     return (
-        <div className={cn("z-50 bg-background dark:bg-zinc-900 fixed top-0 flex items-center w-full p-6" , scrolled && "border-b shadow-sm")}>
+        <div className={cn("z-50 bg-background dark:bg-zinc-900 fixed top-0 flex items-center justify-around w-full p-6" , scrolled && "border-b shadow-sm")}>
+           
             <Logo/>
-            <div className="md:ml-auto md:justify-end justify-between w-full flex items-center gap-x-2">
+            
+            <div className="md:ml-auto  justify-end w-full flex items-center gap-x-2 ">
                 {isLoading && (
                     <Spinner/>
                 )}
                 {
                     !isAuthenticated && !isLoading && (
                         <>
-                            <SignInButton>
-                                <Button  size="sm">Login</Button>
-                            </SignInButton>
+                            
                             <SignInButton mode="modal">
-                                <Button size="sm">
-                                    Smaran now !
+                                <Button  size="sm">
+                                   Login
                                     </Button>    
                              </SignInButton>
                         </>
@@ -40,8 +40,8 @@ export const Navbar =()=> {
                 {
                     isAuthenticated && !isLoading && (
                         <>
-                            <Button  variant='ghost' size='sm' asChild> 
-                                <Link href='/documents'>Smaran Ideas!</Link>
+                            <Button  variant='outline' size='sm' asChild> 
+                                <Link href='/documents'>Smaran Ai</Link>
                             </Button>
                             <UserButton afterSwitchSessionUrl="/" />
                         </>

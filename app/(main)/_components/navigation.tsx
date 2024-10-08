@@ -1,7 +1,7 @@
 "use client"
 
 import { cn } from "@/lib/utils"
-import { ChevronLeftIcon, Home, MenuIcon, Plus, PlusCircle, SearchIcon, Settings, Trash } from "lucide-react"
+import { Brain, ChevronLeftIcon,  Home, MenuIcon, Plus, PlusCircle, SearchIcon, Settings, Trash } from "lucide-react"
 import { useParams, usePathname, useRouter } from "next/navigation"
 import React, { ElementRef, useEffect, useRef, useState } from "react"
 import { useMediaQuery } from "usehooks-ts"
@@ -17,6 +17,8 @@ import { useSearch } from "@/hooks/use-search"
 import { useSettings } from "@/hooks/use-settings"
 import Navbar from "@/app/(landingpage)/_components/docsNavbar"
 
+import { useAi } from "@/hooks/use-ai"
+
 export const Navigation = () => {
 
     const params = useParams();
@@ -24,11 +26,14 @@ export const Navigation = () => {
     const pathname = usePathname();
     const isMobile = useMediaQuery("(max-width : 768px)");
 
+
+
     const search = useSearch();
 
     const router = useRouter();
 
     const create = useMutation(api.documents.create);
+
 
 
 
@@ -138,6 +143,9 @@ export const Navigation = () => {
             error : "Failed to create a new node."
         })
     }
+   
+
+    const useai = useAi();
 
     
     
@@ -184,6 +192,11 @@ export const Navigation = () => {
                     onClick={()=>router.push('/documents')}
                     icon={Home}
                     label="Home"
+                   />
+                <Item
+                    onClick={useai.onOpen}
+                    icon={Brain}
+                    label="Ai create"
                    />
                 <Item
                     onClick={handleCreate}

@@ -1,7 +1,7 @@
 "use client"
 
 import { useSettings } from "@/hooks/use-settings";
-import { Dialog, DialogContent, DialogHeader } from "../ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
 import { Label } from "../ui/label";
 import { ModeToggle } from "../mode-toggle";
 
@@ -13,7 +13,7 @@ const SettingsModal = () => {
             <DialogContent>
                 <DialogHeader className="border-b pb-3">
                     <h2 className="text-lg font-medium">
-                        My settings
+                       <DialogTitle> My settings</DialogTitle>
                     </h2>
 
                 </DialogHeader>

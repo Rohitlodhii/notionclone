@@ -3,11 +3,12 @@
 import Image from "next/image";
 import { useUser } from "@clerk/clerk-react";
 import { Button } from "@/components/ui/button";
-import { PlusCircle } from "lucide-react";
+import { Brain, PlusCircle } from "lucide-react";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { useAi } from "@/hooks/use-ai";
 
 const DocumentPage = () => {
 
@@ -15,6 +16,8 @@ const DocumentPage = () => {
 
     const router = useRouter();
     const create = useMutation(api.documents.create);
+
+    const useai = useAi();
 
     const onCreate =  () => {
         const promise =  create({
@@ -49,10 +52,16 @@ const DocumentPage = () => {
                 Namaste! {user?.firstName}, 
             </h2>
 
-            <Button onClick={onCreate}>
+        <div className="flex gap-x-2">
+            <Button  variant="outline" size='sm' onClick={onCreate}>
                 <PlusCircle className="h-4 w-4 mr-2" />
                 Add Note
             </Button>
+            <Button size='sm' variant='outline' onClick={useai.onOpen}>
+                <Brain className="h-4 w-4 mr-2" />
+                Use AI
+            </Button>
+            </div>
 
         </div>
     )
