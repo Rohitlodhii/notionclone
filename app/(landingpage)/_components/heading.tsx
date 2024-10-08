@@ -22,7 +22,7 @@ const Heading = () => {
        <div className="  w-full dark:bg-zinc-900 bg-white dark:bg-dot-white/[0.1] bg-dot-black/[0.3] relative md:pt-30 pt-32 space-y-4">
       {/* Radial gradient for the container to give a faded look */}
       <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-zinc-900 bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
-       <h1 className="text-4xl  font-semibold md:text-4xl lg:text-6xl  max-w-7xl mx-auto text-center mt-6 relative z-20 py-1 bg-clip-text  text-black dark:text-whites leading-relaxed md:leading-loose">
+       <h1 className="text-4xl  font-semibold md:text-4xl lg:text-6xl  max-w-7xl mx-auto text-center mt-6 relative z-20 py-1 bg-clip-text  text-black dark:text-white leading-relaxed md:leading-loose">
         Manage your notes <br /> in <Cover>Breeziness..</Cover>
       </h1>
 
